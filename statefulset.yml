@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: hello-node
+spec:
+  selector:
+    matchLabels:
+      app: hello-node
+  serviceName: "nginx"
+  replicas: 2 
+  template:
+    metadata:
+      labels:
+        app: hello-node # has to match .spec.selector.matchLabels
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: hello-node
+        image: maniengg/hello-world 
+        ports:
+        - containerPort: 3000
