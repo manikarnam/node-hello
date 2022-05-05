@@ -5,7 +5,7 @@ node{
     }
     
     stage('Build Docker Image'){
-	    bat "docker build -t maniengg/hello-world:latest hello-world/"
+	    bat "docker build -t maniengg/hello-world:latest"
     }
     stage('Push Docker Image'){
         withCredentials([string(credentialsId: 'DOKCER_HUB_PASSWORD', variable: 'DOKCER_HUB_PASSWORD')]) {
